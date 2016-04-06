@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="contactsApp">
+<head>
+	<title>Contacts</title>
+	<link rel="stylesheet" type="text/css" href="/public/lib/bootstrap/dist/css/bootstrap.css">
+	<script type="text/javascript" src="/public/lib/angular/angular.js"></script>
+	<script type="text/javascript" src="/public/lib/angular-resource/angular-resource.js"></script> 
+	<script type="text/javascript" src="/public/controllers/app.js"></script>
+	<script type="text/javascript" src="/public/controllers/contactsCtrl.js"></script>
+	<!--<script type="text/javascript" src="../lib/angular-resource/angular-resource.js"></script> -->
+</head>
+<body ng-controller="contactsController">
+<div class="col-md-6 col-md-offset-3">
+<form role="form" ng-submit="addContact()">
+<p class="alert alert-danger" ng-show="showWarning">{{ warning }}</p>
+  <div class="form-group">
+    <label>Name:</label>
+    <input type="text" class="form-control" ng-model="contactName">
+  </div>
+  <div class="form-group">
+    <label>Mobile Number:</label>
+    <input type="text" class="form-control" ng-model="contactMobile">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<br>
+<br>
+</div>
+<table class="table table-bordered table-striped">
+	<tr>
+		<th>S.No</th>
+		<th>Name</th>
+		<th>Phone Number</th>
+	</tr>
+	<tr ng-repeat="contact in contacts">
+		<td>{{ $index+1 }}</td>
+		<td>{{ contact.name }}</td>
+		<td>{{ contact.mobile }}</td>
+	</tr>
+</table>
+</body>
+</html>
